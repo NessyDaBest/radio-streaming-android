@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.HomeFragment">
+
+    <!-- Sección: Sonando ahora -->
+    <ImageView
+        android:id="@+id/radioLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@android:drawable/ic_menu_gallery" />
+
+    <ImageButton
+        android:id="@+id/playButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@null"
+        android:src="@android:drawable/ic_media_play"
+        app:layout_constraintBottom_toBottomOf="@id/radioLogo"
+        app:layout_constraintEnd_toEndOf="@id/radioLogo" />
+
+    <TextView
+        android:id="@+id/sonandoAhoraText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sonando ahora"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/radioLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="8dp" />
+
+    <!-- Sección: Últimas noticias con separación -->
+    <TextView
+        android:id="@+id/ultimasNoticiasText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Últimas noticias"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/sonandoAhoraText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingTop="16dp"
+        android:paddingStart="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/newsGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="56dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/newsBarrier"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="ultimasNoticiasText" />
+
+    <ScrollView
+        android:id="@+id/newsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/newsGuideline"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_margin="8dp" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_margin="8dp" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_margin="8dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Barra de navegación personalizada -->
+    <LinearLayout
+        android:id="@+id/bottomNavContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@android:drawable/ic_menu_home" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inicio" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@android:drawable/ic_menu_info_details" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Info" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
