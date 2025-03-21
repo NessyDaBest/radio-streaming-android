@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/clRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <!-- Imagen superior (arriba.png) -->
+    <ImageView
+        android:id="@+id/imageViewTop"
+        android:background="#FF0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arriba"
+        android:contentDescription="Imagen superior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"/>
+
+    <!-- Imagen inferior (abajo.png) -->
+    <ImageView
+        android:id="@+id/imageViewBottom"
+        android:layout_width="wrap_content"
+        android:background="#0000FF"
+        android:layout_height="wrap_content"
+        android:src="@drawable/abajo"
+        android:contentDescription="Imagen inferior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
