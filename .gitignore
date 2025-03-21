@@ -1,0 +1,50 @@
+# Directorios de compilación
+/build/
+/out/
+/externalNativeBuild/
+/.cxx/
+
+# Configuración local de Android Studio
+/local.properties
+/.idea/caches/
+/.idea/libraries/
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# Archivos de Gradle generados
+.gradle/
+gradle-app.setting
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Caché de Kotlin y compilación
+.kotlinc/
+
+# Archivos específicos de Android
+*.apk
+*.ap_
+*.aab
+
+# Archivos de prueba generados
+/test-results/
+/test-output/
+
+# Archivos de entorno
+*.iml
+*.log
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales de depuración
+captures/
+hs_err_pid*
+
+# Registro de Git
+*.orig
+
+# Archivos específicos de IDE (opcional)
+.idea/
