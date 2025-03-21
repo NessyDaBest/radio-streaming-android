@@ -2,4 +2,22 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="primary_1">#547AD4</color>
+    <color name="primary_2">#2E5FCF</color>
+    <color name="primary_3">#0E48CD</color>
+    <color name="primary_4">#093599</color>
+    <color name="primary_5">#072977</color>
+
+    <color name="secondary_1">#7456D6</color>
+    <color name="secondary_2">#5730D1</color>
+    <color name="secondary_3">#3D10D0</color>
+    <color name="secondary_4">#2D0B9D</color>
+    <color name="secondary_5">#23087A</color>
+
+    <color name="tertiary_1">#42CBCB</color>
+    <color name="tertiary_2">#1AC4C4</color>
+    <color name="tertiary_3">#00C3C3</color>
+    <color name="tertiary_4">#008989</color>
+    <color name="tertiary_5">#006B6B</color>
 </resources>
