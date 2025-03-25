@@ -18,6 +18,8 @@
 gradle-app.setting
 gradle-wrapper.jar
 gradle-wrapper.properties
+gradlew
+gradlew.bat
 
 # Caché de Kotlin y compilación
 .kotlinc/
