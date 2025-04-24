@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFrag">
+
+    <fragment
+        android:id="@+id/mainFrag"
+        android:name="com.nemo.imaginaradio.views.MainFrag"
+        android:label="main_frag"
+        tools:layout="@layout/main_frag" />
+</navigation>
