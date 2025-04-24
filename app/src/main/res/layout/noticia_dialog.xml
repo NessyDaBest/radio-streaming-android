@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    android:background="@android:color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        app:layout_constraintWidth_percent="0.8">
+
+        <!-- Botón de cerrar -->
+        <ImageButton
+            android:id="@+id/btnCerrar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="Cerrar" />
+
+        <!-- Imagen destacada -->
+        <ImageView
+            android:id="@+id/imagenNoticia"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/btnCerrar"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_gallery" />
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tituloNoticia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imagenNoticia"
+            android:layout_marginTop="16dp"
+            android:text="Título largo de la noticia que puede ocupar varias líneas"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <!-- Contenido -->
+        <TextView
+            android:id="@+id/contenidoNoticia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tituloNoticia"
+            android:layout_marginTop="8dp"
+            android:text="Resumen de la noticia con detalles breves para enganchar al lector..."
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+
+        <!-- Botón "Continuar leyendo" -->
+        <Button
+            android:id="@+id/btnLeerMas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/contenidoNoticia"
+            android:layout_marginTop="16dp"
+            android:text="Continuar leyendo en la web"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
