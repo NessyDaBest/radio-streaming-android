@@ -34,6 +34,5 @@ class MainActivity : AppCompatActivity(){
 
     private fun setupNavbar(){
         NavigationUI.setupWithNavController(binding.mainNavbar, getNavController())
-
     }
 }
