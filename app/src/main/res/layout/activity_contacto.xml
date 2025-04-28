@@ -122,15 +122,15 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/facebook_icon"
-                    android:contentDescription="@string/facebook_icon"
-                    android:layout_marginEnd="" />
+                    android:contentDescription="facebook"
+                    android:layout_marginEnd="20dp" />
 
                 <ImageView
                     android:id="@+id/ivTwitter"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/twitter_icon"
-                    android:contentDescription="@string/twitter_icon"
+                    android:contentDescription="twitter"
                     android:layout_marginStart="20dp" />
 
                 <ImageView
@@ -138,7 +138,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/instagram_icon"
-                    android:contentDescription="@string/instagram_icon"
+                    android:contentDescription="instagram"
                     android:layout_marginStart="20dp" />
             </LinearLayout>
         </LinearLayout>

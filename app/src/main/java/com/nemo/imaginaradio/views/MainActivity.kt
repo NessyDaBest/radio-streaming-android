@@ -17,16 +17,10 @@ class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-<<<<<<< .merge_file_dHZBY5
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         startBinding()
         setupNavbar()
+        setContentView(binding.root)
     }
 
     fun getNavController(): NavController{
@@ -41,7 +35,5 @@ class MainActivity : AppCompatActivity(){
 
     private fun setupNavbar(){
         NavigationUI.setupWithNavController(binding.mainNavbar, getNavController())
-=======
->>>>>>> .merge_file_BCHfKX
     }
 }

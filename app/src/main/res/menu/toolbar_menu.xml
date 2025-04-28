@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/radio_fragment"
+        android:id="@+id/homeFragment"
         android:title="Ràdio"
         android:icon="@drawable/baseline_radio_24"
         app:showAsAction="always"
@@ -13,13 +13,13 @@
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/schedule_fragment"
+        android:id="@+id/progFragment"
         android:title="Horari"
         android:icon="@drawable/outline_access_time_24"
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/contact_fragment"
+        android:id="@+id/contactActivity"
         android:title="Contacte"
         android:icon="@drawable/baseline_3p_24"
 
