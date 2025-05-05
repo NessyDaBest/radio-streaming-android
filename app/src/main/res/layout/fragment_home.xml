@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.HomeFragment">
+
+    <!-- Reproductor flotante visible arriba (50% del alto) -->
+    <LinearLayout
+        android:id="@+id/reproductorEnVivo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/radioLogo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery" />
+
+            <ImageButton
+                android:id="@+id/playButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="12dp"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_media_play" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/sonandoAhoraText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sonando ahora"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="8dp" />
+    </LinearLayout>
+
+    <!-- Contenedor para scroll de programación del día -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/mainScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/reproductorEnVivo"
+        app:layout_constraintBottom_toTopOf="@id/reproductorPlaceholder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Fila con flechas, botón de info y días dinámicos -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@android:color/white">
+
+                <ImageButton
+                    android:id="@+id/btnDiaAnterior"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_media_previous" />
+
+                <ImageButton
+                    android:id="@+id/btnVerProgramacionCompleta"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_dialog_info"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="Ver programación completa" />
+
+                <LinearLayout
+                    android:id="@+id/contenedorDias"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:background="@android:color/white" />
+
+                <ImageButton
+                    android:id="@+id/btnDiaSiguiente"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_media_next" />
+            </LinearLayout>
+
+            <!-- Aquí se cargan dinámicamente los bloques de programación -->
+            <LinearLayout
+                android:id="@+id/contenedorProgramacion"
+                android:layout_width="match_parent"
+                android:layout_height="141dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Placeholder para reproductor fijo inferior (Spotify-style, manejado externamente) -->
+    <FrameLayout
+        android:id="@+id/reproductorPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavPlaceholder" />
+
+    <!-- Placeholder para barra de navegación -->
+    <FrameLayout
+        android:id="@+id/bottomNavPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Fondo flotante semitransparente invisible por defecto -->
+    <View
+        android:id="@+id/fondoFlotante"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CC000000"
+        android:visibility="gone" />
+
+    <!-- Imagen flotante de programación -->
+    <ImageView
+        android:id="@+id/imgProgramacionCompleta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

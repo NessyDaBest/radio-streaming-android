@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.ProgFragment">
+
+    <!-- Título superior -->
+    <TextView
+        android:id="@+id/tituloProgramacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Programación"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Imagen obtenida por URL -->
+    <ImageView
+        android:id="@+id/imagenProgramacion"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Imagen de programación"
+        app:layout_constraintTop_toBottomOf="@id/tituloProgramacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/reproductorPlaceholder"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Placeholder para reproductor (componente externo) -->
+    <FrameLayout
+        android:id="@+id/reproductorPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavPlaceholder" />
+
+    <!-- Placeholder para barra de navegación -->
+    <FrameLayout
+        android:id="@+id/bottomNavPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
