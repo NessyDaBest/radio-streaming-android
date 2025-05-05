@@ -10,11 +10,12 @@
     <!-- Reproductor flotante visible arriba (50% del alto) -->
     <LinearLayout
         android:id="@+id/reproductorEnVivo"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="@android:color/darker_gray"
+        android:background="@color/primary_1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,8 +40,10 @@
                 android:layout_height="48dp"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="12dp"
-                android:background="@android:color/transparent"
-                android:src="@android:drawable/ic_media_play" />
+                android:background="@color/tertiary_1"
+                android:src="@android:drawable/ic_media_play"
+                app:tint="@color/secondary_3"
+                android:tintMode="src_in"/>
         </FrameLayout>
 
         <TextView
@@ -60,10 +63,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/reproductorEnVivo"
-        app:layout_constraintBottom_toTopOf="@id/reproductorPlaceholder"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/reproductorEnVivo">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -75,9 +77,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:background="@android:color/white"
                 android:gravity="center_vertical"
-                android:background="@android:color/white">
+                android:orientation="horizontal">
 
                 <ImageButton
                     android:id="@+id/btnDiaAnterior"
@@ -90,20 +92,20 @@
                     android:id="@+id/btnVerProgramacionCompleta"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@android:color/transparent"
-                    android:src="@android:drawable/ic_dialog_info"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:contentDescription="Ver programación completa" />
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Ver programación completa"
+                    android:src="@android:drawable/ic_dialog_info" />
 
                 <LinearLayout
                     android:id="@+id/contenedorDias"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
+                    android:background="@android:color/white"
                     android:gravity="center_horizontal"
-                    android:background="@android:color/white" />
+                    android:orientation="horizontal" />
 
                 <ImageButton
                     android:id="@+id/btnDiaSiguiente"
@@ -125,12 +127,6 @@
     </androidx.core.widget.NestedScrollView>
 
     <!-- Placeholder para reproductor fijo inferior (Spotify-style, manejado externamente) -->
-    <FrameLayout
-        android:id="@+id/reproductorPlaceholder"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavPlaceholder" />
 
     <!-- Placeholder para barra de navegación -->
     <FrameLayout

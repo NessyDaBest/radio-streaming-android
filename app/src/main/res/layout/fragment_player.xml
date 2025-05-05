@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".views.PlayerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
@@ -78,7 +76,7 @@
         android:indeterminate="false"
         android:max="59"
         android:progress="15"
-        android:progressTint="@color/blue"
+        android:progressTint="@color/primary_3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -86,7 +84,7 @@
         app:layout_constraintVertical_bias="0.16000003" />
 
     <TextView
-        android:id="@+id/txtHourB"
+        android:id="@+id/txtHourA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -95,13 +93,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/txtHourA"
+        android:id="@+id/txtHourB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="11:00"
-        app:layout_constraintBottom_toBottomOf="@+id/txtHourB"
+        app:layout_constraintBottom_toBottomOf="@+id/txtHourA"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/txtHourB" />
+        app:layout_constraintTop_toTopOf="@+id/txtHourA" />
 
     <ImageView
         android:id="@+id/imgState"
@@ -110,8 +108,18 @@
         android:layout_marginTop="32dp"
         android:background="@color/white"
         android:backgroundTintMode="add"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/pbMinutes"
-        tools:layout_editor_absoluteX="170dp"
         tools:src="@android:drawable/ic_media_play" />
+
+    <ImageView
+        android:id="@+id/imgClose"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/btn_dialog"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
