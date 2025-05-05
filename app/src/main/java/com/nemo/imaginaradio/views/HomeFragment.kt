@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil3.load
 import com.nemo.imaginaradio.databinding.FragmentHomeBinding
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
+import java.util.*
 
 class HomeFragment : Fragment() {
 
@@ -21,7 +19,6 @@ class HomeFragment : Fragment() {
         "https://www.imaginaradio.cat/wp-content/uploads/2021/10/programacio-im.jpg"
 
     private val diasSemana = listOf("LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO", "DOMINGO")
-    private var indiceVisible = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +32,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Mostrar imagen flotante
+        /*
         binding.btnVerProgramacionCompleta.setOnClickListener {
             binding.fondoFlotante.visibility = View.VISIBLE
             binding.imgProgramacionCompleta.visibility = View.VISIBLE
@@ -47,27 +45,12 @@ class HomeFragment : Fragment() {
         }
         binding.fondoFlotante.setOnClickListener(ocultarImagen)
         binding.imgProgramacionCompleta.setOnClickListener(ocultarImagen)
-
-        // Configurar navegación por días
-        binding.btnDiaAnterior.setOnClickListener {
-            if (indiceVisible > 0) {
-                indiceVisible--
-                mostrarDias()
-            }
-        }
-        binding.btnDiaSiguiente.setOnClickListener {
-            if (indiceVisible + 4 < diasSemana.size) {
-                indiceVisible++
-                mostrarDias()
-            }
-        }
-
-        mostrarDias()
+        */
+        // Configurar RecyclerView de días
+        setupRecyclerDias()
     }
 
-    private fun mostrarDias() {
-        binding.contenedorDias.removeAllViews()
-
+    private fun setupRecyclerDias() {
         val hoy = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
         val mapDiaSemana = mapOf(
             Calendar.MONDAY to "LUNES",
@@ -81,17 +64,13 @@ class HomeFragment : Fragment() {
 
         val nombreHoy = mapDiaSemana[hoy]
 
-        for (i in indiceVisible until (indiceVisible + 4).coerceAtMost(diasSemana.size)) {
-            val dia = diasSemana[i]
-            val boton = Button(requireContext()).apply {
-                text = if (dia == nombreHoy) "HOY" else dia
-                layoutParams = ViewGroup.MarginLayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                ).apply { setMargins(8, 0, 8, 0) }
-            }
-            binding.contenedorDias.addView(boton)
+        val listaDias = diasSemana.map { dia ->
+            if (dia == nombreHoy) "HOY" else dia
         }
+
+        val adapter = DiasAdapter(listaDias)
+        binding.recyclerDias.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerDias.adapter = adapter
     }
 
     override fun onDestroyView() {
