@@ -1,7 +1,37 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.ImaginaRadio" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Primary -->
+        <item name="colorPrimary">@color/primary_3</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/primary_5</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">@color/secondary_3</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/secondary_5</item>
+        <item name="colorOnSecondaryContainer">@color/white</item>
+
+        <!-- Tertiary -->
+        <item name="colorTertiary">@color/tertiary_3</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorTertiaryContainer">@color/tertiary_5</item>
+        <item name="colorOnTertiaryContainer">@color/white</item>
+
+        <!-- Superficies -->
+        <item name="colorSurface">@color/gray_900</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurfaceVariant">@color/gray_800</item>
+        <item name="colorOnSurfaceVariant">@color/white</item>
+
+        <!-- Error (opcional) -->
+        <!-- <item name="colorError">@color/red_200</item> -->
     </style>
+
+    <style name="Theme.ImaginaRadio" parent="Base.Theme.ImaginaRadio"
+        tools:targetApi="31">
+        <!-- overrides API31+ si hiciera falta -->
+    </style>
+
 </resources>
