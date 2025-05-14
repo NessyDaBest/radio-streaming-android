@@ -54,8 +54,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val hoy = diasSemana[(java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_WEEK) + 5) % 7]
         setupRecyclerDias()
-        setupRecyclerProgramas("HOY")
+        setupRecyclerProgramas(hoy)
     }
 
     private fun setupRecyclerDias() {
