@@ -12,6 +12,7 @@
         android:icon="@drawable/baseline_newspaper_24"
         app:showAsAction="always"
         />
+    <!-- BORRAR ESTE -->
     <item
         android:id="@+id/progFragment"
         android:title="Horari"

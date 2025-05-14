@@ -21,7 +21,6 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
-
             android:background="@android:color/transparent"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:contentDescription="Cerrar" />
@@ -66,8 +65,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/contenidoNoticia"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
-
             android:text="Continuar leyendo en la web"
             android:textColor="@android:color/white"
             android:textStyle="bold" />

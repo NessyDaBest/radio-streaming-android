@@ -4,15 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import coil3.load
+import com.nemo.imaginaradio.R
 import com.nemo.imaginaradio.databinding.FragmentHomeBinding
 import com.nemo.imaginaradio.model.Programa
+import com.nemo.imaginaradio.utils.RadioPlayer
+import com.nemo.imaginaradio.viewmodels.PlayerViewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private val playerViewModel: PlayerViewModel by activityViewModels()
+
+    private val urlProgramacion =
+        "https://www.imaginaradio.cat/wp-content/uploads/2021/10/programacio-im.jpg"
 
     private val diasSemana = listOf("LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO", "DOMINGO")
 
@@ -49,6 +67,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        inicializarReproductor()
         return binding.root
     }
 
@@ -79,6 +98,14 @@ class HomeFragment : Fragment() {
         }
         binding.recyclerProgramacion.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerProgramacion.adapter = adapterProgramas
+    }
+
+    private fun inicializarReproductor() {
+        RadioPlayer.initialize(playerViewModel,binding.playButton)
+        binding.reproductorEnVivo.setOnClickListener {
+            requireActivity().findViewById<ConstraintLayout>(R.id.main).visibility = View.GONE
+            requireActivity().findViewById<FragmentContainerView>(R.id.player_container).visibility = View.VISIBLE
+        }
     }
 
     override fun onDestroyView() {
