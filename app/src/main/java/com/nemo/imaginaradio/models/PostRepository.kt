@@ -9,6 +9,7 @@ class PostRepository {
     private val postApi:PostApi = Retrofit.Builder().baseUrl("https://www.imaginaradio.cat/wp-json/wp/v2/").addConverterFactory(
         MoshiConverterFactory.create(moshi)).build().create(PostApi::class.java)
 
+    //Post queries
     suspend fun getCategoryPosts(category: Int, perPage: Int = 10): List<Post>{
         return arrayParse(postApi.getCategoryPosts(category = category, perPage = perPage))
     }
@@ -29,6 +30,10 @@ class PostRepository {
         )
     }
 
+    //Media queries
+    suspend fun getPostMedia(id: Int): String{
+        return postApi.getPostMedia(id = id).media_details.sizes.large.source_url
+    }
 
     //Parsing posts array response
     fun arrayParse(res: List<PostRaw>): List<Post>{
