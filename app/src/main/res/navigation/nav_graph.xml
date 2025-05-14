@@ -16,6 +16,11 @@
         android:label="fragment_prog"
         tools:layout="@layout/fragment_prog" />
     <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.nemo.imaginaradio.views.NoticiaDialogFragment"
+        android:label="news_prog"
+        tools:layout="@layout/noticia_dialog" />
+    <fragment
         android:id="@+id/homeFragment"
         android:name="com.nemo.imaginaradio.views.HomeFragment"
         android:label="fragment_home"
