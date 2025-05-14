@@ -11,28 +11,27 @@
     <!-- Reproductor flotante visible arriba -->
     <LinearLayout
         android:id="@+id/reproductorEnVivo"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="378dp"
+        android:layout_height="316dp"
         android:layout_margin="8dp"
-        android:orientation="vertical"
         android:background="@color/primary_1"
+        android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.5">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Contenido del reproductor -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="200dp"
             android:layout_marginBottom="8dp">
 
             <ImageView
                 android:id="@+id/radioLogo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
                 android:src="@drawable/logo_imagina_radio" />
 
             <ImageButton
@@ -42,78 +41,43 @@
                 android:layout_gravity="bottom|end"
                 android:layout_margin="12dp"
                 android:background="@color/tertiary_1"
-                app:tint="@color/secondary_3"
+                android:src="@android:drawable/ic_media_play"
                 android:tintMode="src_in"
-                android:src="@android:drawable/ic_media_play" />
+                app:tint="@color/secondary_3" />
         </FrameLayout>
 
         <TextView
             android:id="@+id/sonandoAhoraText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sonando ahora"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="8dp" />
+            android:paddingTop="8dp"
+            android:text="Sonando ahora"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Contenedor de programación + días -->
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/mainScroll"
+    <!-- RecyclerView para días -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDias"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/reproductorEnVivo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- RecyclerView para días de la semana -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerDias"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal" />
-
-            <!-- Contenedor para bloques de programación -->
-            <LinearLayout
-                android:id="@+id/contenedorProgramacion"
-                android:layout_width="match_parent"
-                android:layout_height="105dp"
-                android:orientation="vertical" />
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-
-    <!-- Fondo flotante semitransparente invisible por defecto -->
-    <View
-        android:id="@+id/fondoFlotante"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#CC000000"
-        android:visibility="gone" />
-
-    <!-- Imagen flotante de programación -->
-    <ImageView
-        android:id="@+id/imgProgramacionCompleta"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:visibility="gone"
-        android:background="@android:color/white"
-        android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/reproductorEnVivo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- RecyclerView para programación (scrollable) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerProgramacion"
+        android:layout_width="369dp"
+        android:layout_height="390dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reproductorEnVivo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

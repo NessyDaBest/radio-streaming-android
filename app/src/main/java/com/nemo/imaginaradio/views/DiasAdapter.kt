@@ -6,7 +6,10 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.nemo.imaginaradio.R
 
-class DiasAdapter(private val dias: List<String>) : RecyclerView.Adapter<DiasAdapter.DiaViewHolder>() {
+class DiasAdapter(
+    private val dias: List<String>,
+    private val onDiaSeleccionado: (String) -> Unit
+) : RecyclerView.Adapter<DiasAdapter.DiaViewHolder>() {
 
     inner class DiaViewHolder(val button: Button) : RecyclerView.ViewHolder(button)
 
@@ -17,8 +20,11 @@ class DiasAdapter(private val dias: List<String>) : RecyclerView.Adapter<DiasAda
     }
 
     override fun onBindViewHolder(holder: DiaViewHolder, position: Int) {
-        holder.button.text = dias[position]
-        // Puedes añadir listeners o lógica extra aquí.
+        val dia = dias[position]
+        holder.button.text = dia
+        holder.button.setOnClickListener {
+            onDiaSeleccionado(dia)
+        }
     }
 
     override fun getItemCount(): Int = dias.size
