@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingTop="8dp"
-            android:text="Sonando ahora"
+            android:text="En reproducció ara"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             android:textStyle="bold" />
