@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -21,17 +22,26 @@ import com.nemo.imaginaradio.viewmodels.PlayerViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+=======
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.nemo.imaginaradio.databinding.FragmentHomeBinding
+import com.nemo.imaginaradio.model.Programa
+>>>>>>> rama_nestor
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+<<<<<<< HEAD
     private val playerViewModel: PlayerViewModel by activityViewModels()
 
     private val urlProgramacion =
         "https://www.imaginaradio.cat/wp-content/uploads/2021/10/programacio-im.jpg"
 
+=======
+>>>>>>> rama_nestor
     private val diasSemana = listOf("LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO", "DOMINGO")
 
     private val mapProgramas = mapOf(
@@ -73,8 +83,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+<<<<<<< HEAD
         setupRecyclerDias()
         setupRecyclerProgramas("HOY")
+=======
+        val hoy = diasSemana[(java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_WEEK) + 5) % 7]
+        setupRecyclerDias()
+        setupRecyclerProgramas(hoy)
+>>>>>>> rama_nestor
     }
 
     private fun setupRecyclerDias() {
@@ -83,6 +99,7 @@ class HomeFragment : Fragment() {
         adapterDias = DiasAdapter(listaDias) { diaSeleccionado ->
             val clave = if (diaSeleccionado == "HOY") hoy else diaSeleccionado
             setupRecyclerProgramas(clave)
+<<<<<<< HEAD
         }
         binding.recyclerDias.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerDias.adapter = adapterDias
@@ -105,7 +122,23 @@ class HomeFragment : Fragment() {
         binding.reproductorEnVivo.setOnClickListener {
             requireActivity().findViewById<ConstraintLayout>(R.id.main).visibility = View.GONE
             requireActivity().findViewById<FragmentContainerView>(R.id.player_container).visibility = View.VISIBLE
+=======
+>>>>>>> rama_nestor
         }
+        binding.recyclerDias.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerDias.adapter = adapterDias
+    }
+
+    private fun setupRecyclerProgramas(dia: String) {
+        val lista = mapProgramas[dia].orEmpty()
+        if (lista.isEmpty()) {
+            val mensaje = Programa("", "Avui no hi ha programes", "", "")
+            adapterProgramas = ProgramaAdapter(listOf(mensaje))
+        } else {
+            adapterProgramas = ProgramaAdapter(lista)
+        }
+        binding.recyclerProgramacion.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.recyclerProgramacion.adapter = adapterProgramas
     }
 
     override fun onDestroyView() {
