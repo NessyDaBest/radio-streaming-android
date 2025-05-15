@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/primary_1"
     tools:context=".views.HomeFragment">
 
     <!-- Reproductor flotante visible arriba -->
@@ -40,7 +40,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="12dp"
-                android:background="@color/tertiary_1"
+                android:background="@color/white"
                 android:src="@android:drawable/ic_media_play"
                 android:tintMode="src_in"
                 app:tint="@color/secondary_3" />

@@ -26,6 +26,7 @@
         <item name="colorSurfaceVariant">@color/blue_50</item>
         <item name="colorOnSurfaceVariant">@color/gray_800</item>
 
+
         <!-- Error (dejamos Material rojo por defecto o personaliza) -->
         <!-- <item name="colorError">@color/red_800</item> -->
     </style>
@@ -35,5 +36,6 @@
         parent="Base.Theme.ImaginaRadio"
         tools:targetApi="31">
     </style>
+
 
 </resources>

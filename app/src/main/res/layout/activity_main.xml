@@ -19,7 +19,6 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph"
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,17 +35,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
-
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/main_navbar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-
+            android:layout_height="wrap_content"
             app:menu="@menu/toolbar_menu"
             app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:itemIconTint="@color/nav_item_color"
+            app:itemTextColor="@color/nav_text_color"
+            app:itemBackground="@android:color/transparent"
+            app:itemRippleColor="@android:color/transparent"
 
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.fragment.app.FragmentContainerView
@@ -55,8 +55,4 @@
         android:layout_height="match_parent"
         android:name="com.nemo.imaginaradio.views.PlayerFragment"
         android:visibility="gone"/>
-
 </FrameLayout>
-
-
-
