@@ -54,16 +54,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val hoy = diasSemana[(java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_WEEK) + 5) % 7]
-        setupRecyclerDias()
-        setupRecyclerProgramas(hoy)
+        val hoyIndex = (java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_WEEK) + 5) % 7
+        val hoyCatalan = diasSemana[hoyIndex]
+        setupRecyclerDias(hoyCatalan)
+        setupRecyclerProgramas(hoyCatalan)
     }
 
-    private fun setupRecyclerDias() {
-        val hoy = diasSemana[(java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_WEEK) + 5) % 7]
-        val listaDias = diasSemana.map { if (it == hoy) "HOY" else it }
+    private fun setupRecyclerDias(hoyCatalan: String) {
+        val listaDias = diasSemana.map { if (it == hoyCatalan) "AVUI" else it }
         adapterDias = DiasAdapter(listaDias) { diaSeleccionado ->
-            val clave = if (diaSeleccionado == "HOY") hoy else diaSeleccionado
+            val clave = if (diaSeleccionado == "AVUI") hoyCatalan else diaSeleccionado
             setupRecyclerProgramas(clave)
         }
         binding.recyclerDias.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
