@@ -55,7 +55,8 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        android:visibility="gone">
 
         <!-- Imagen superior: ocupa tod el espacio, recortando si hace falta -->
         <ImageView

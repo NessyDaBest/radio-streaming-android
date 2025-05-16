@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import coil3.load
 import com.nemo.imaginaradio.R
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nemo.imaginaradio.databinding.FragmentHomeBinding
 import com.nemo.imaginaradio.model.Programa
 import com.nemo.imaginaradio.utils.RadioPlayer
@@ -24,28 +24,27 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val playerViewModel: PlayerViewModel by activityViewModels()
-
-    private val diasSemana = listOf("LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO", "DOMINGO")
+    private val diasSemana = listOf("DILLUNS", "DIMARTS", "DIMECRES", "DIJOUS", "DIVENDRES", "DISSABTE", "DIUMENGE")
 
     private val mapProgramas = mapOf(
-        "LUNES" to listOf(
+        "DILLUNS" to listOf(
             Programa("8:00h", "De Bon Matí", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1638262526/debonmati.jpg?tr=h-300,fo-auto")
         ),
-        "MARTES" to listOf(
+        "DIMARTS" to listOf(
             Programa("8:00h", "De Bon Matí", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1638262526/debonmati.jpg?tr=h-300,fo-auto")
         ),
-        "MIÉRCOLES" to listOf(
+        "DIMECRES" to listOf(
             Programa("8:00h", "De Bon Matí", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1638262526/debonmati.jpg?tr=h-300,fo-auto")
         ),
-        "JUEVES" to listOf(
+        "DIJOUS" to listOf(
             Programa("8:00h", "De Bon Matí", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1638262526/debonmati.jpg?tr=h-300,fo-auto"),
             Programa("21:00h", "Les coses clares", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1741362408/Captura_de_pantalla_2025-03-07_a_las_16.46.11.png?tr=h-300,fo-auto")
         ),
-        "VIERNES" to listOf(
+        "DIVENDRES" to listOf(
             Programa("8:00h", "De Bon Matí", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1638262526/debonmati.jpg?tr=h-300,fo-auto")
         ),
-        "SÁBADO" to emptyList(),
-        "DOMINGO" to listOf(
+        "DISSABTE" to emptyList(),
+        "DIUMENGE" to listOf(
             Programa("10:00h", "Cocodril Club", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1638263425/COCODRIL-CLUB.jpg?tr=h-300,fo-auto"),
             Programa("12:00h", "Camí a Eurovisió", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1743080584/2s6WzouN_400x400.jpg?tr=h-300,fo-auto"),
             Programa("16:00h - 20:00h", "Tots els Gols", null, "https://ik.imagekit.io/7ftrkrun31/enacast/logos_programes/1638262770/tots_elsgols.jpg?tr=h-300,fo-auto")
@@ -66,15 +65,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val hoy = diasSemana[(Calendar.getInstance().get(Calendar.DAY_OF_WEEK) + 5) % 7]
-        setupRecyclerDias(hoy)
-        setupRecyclerProgramas(hoy)
+        val hoyIndex = (java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_WEEK) + 5) % 7
+        val hoyCatalan = diasSemana[hoyIndex]
+        setupRecyclerDias(hoyCatalan)
+        setupRecyclerProgramas(hoyCatalan)
     }
 
-    private fun setupRecyclerDias(hoy: String) {
-        val listaDias = diasSemana.map { if (it == hoy) "HOY" else it }
+    private fun setupRecyclerDias(hoyCatalan: String) {
+        val listaDias = diasSemana.map { if (it == hoyCatalan) "AVUI" else it }
         adapterDias = DiasAdapter(listaDias) { diaSeleccionado ->
-            val clave = if (diaSeleccionado == "HOY") hoy else diaSeleccionado
+            val clave = if (diaSeleccionado == "AVUI") hoyCatalan else diaSeleccionado
             setupRecyclerProgramas(clave)
         }
         binding.recyclerDias.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -83,12 +83,12 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerProgramas(dia: String) {
         val lista = mapProgramas[dia].orEmpty()
-        val programas = if (lista.isEmpty()) {
-            listOf(Programa("", "Avui no hi ha programes", "", ""))
+        if (lista.isEmpty()) {
+            val mensaje = Programa("", "Avui no hi ha programes", "", "")
+            adapterProgramas = ProgramaAdapter(listOf(mensaje))
         } else {
-            lista
+            adapterProgramas = ProgramaAdapter(lista)
         }
-        adapterProgramas = ProgramaAdapter(programas)
         binding.recyclerProgramacion.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recyclerProgramacion.adapter = adapterProgramas
     }

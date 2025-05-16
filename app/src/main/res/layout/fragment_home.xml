@@ -32,7 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
-                android:src="@drawable/logo_imagina_radio" />
+                android:src="@drawable/logo_imagina_radio"
+                />
 
             <ImageButton
                 android:id="@+id/playButton"
@@ -40,7 +41,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="12dp"
-                android:background="@color/white"
+                android:background="@drawable/circular_background"
                 android:src="@android:drawable/ic_media_play"
                 android:tintMode="src_in"
                 app:tint="@color/secondary_3" />
@@ -52,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingTop="8dp"
-            android:text="En reproducció ara"
+            android:text="IMAGINARÀDIO"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             android:textStyle="bold" />

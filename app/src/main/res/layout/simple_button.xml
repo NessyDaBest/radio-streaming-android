@@ -10,6 +10,4 @@
     android:textSize="14sp"
     android:backgroundTint="@color/primary_1"
     android:textColor="@android:color/white"
-    android:background="@drawable/bg_rounded_button"
-
-    />
+    android:background="@drawable/bg_rounded_button"/>
