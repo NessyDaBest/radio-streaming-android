@@ -11,15 +11,15 @@
     <!-- Reproductor flotante visible arriba -->
     <LinearLayout
         android:id="@+id/reproductorEnVivo"
-        android:layout_width="378dp"
-        android:layout_height="316dp"
-        android:layout_margin="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:background="@color/primary_1"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Contenido del reproductor -->
         <FrameLayout
@@ -29,9 +29,10 @@
 
             <ImageView
                 android:id="@+id/radioLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 android:src="@drawable/logo_imagina_radio" />
 
             <ImageButton
@@ -65,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintTop_toBottomOf="@id/reproductorEnVivo"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,11 +75,16 @@
     <!-- RecyclerView para programación (scrollable) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProgramacion"
-        android:layout_width="369dp"
-        android:layout_height="390dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingBottom="96dp"
+        android:clipToPadding="false"
+        android:overScrollMode="always"
+        app:layout_constraintTop_toBottomOf="@id/recyclerDias"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reproductorEnVivo" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
