@@ -1,7 +1,9 @@
 package com.nemo.imaginaradio.views
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +21,7 @@ import com.nemo.imaginaradio.models.PostRepository
 import kotlinx.coroutines.launch
 
 class NoticiaDialogFragment : DialogFragment() {
-    lateinit var _binding: NoticiaDialogBinding
+    private lateinit var _binding: NoticiaDialogBinding
     private var postRepo = PostRepository()
 
     override fun onCreateView(
@@ -32,24 +34,29 @@ class NoticiaDialogFragment : DialogFragment() {
         return _binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding.btnCerrar.setOnClickListener{ dismiss() }
+    }
+
     //Loading post
     private fun fetchData(){
         lifecycleScope.launch {
             try {
-                fillView(postRepo.getPostById(135131), postRepo.getPostMedia(135133))
+                val post = postRepo.getPostById(135310)
+                val media = postRepo.getPostMedia(post.mediaId)
+                fillView(post, media)
             } catch (e: Exception) {
                 println("Error: ${e.message}")
-                println(e.printStackTrace())
             }
         }
     }
 
     fun fillView(post: Post, media: String){
         lifecycleScope.launch {
-            _binding.tituloNoticia.setText(Html.fromHtml(post.title, Html.FROM_HTML_MODE_LEGACY))
-            _binding.contenidoNoticia.setText(Html.fromHtml(post.content, Html.FROM_HTML_MODE_LEGACY))
+            _binding.tituloNoticia.setText(post.title)
+            _binding.contenidoNoticia.setText(post.content)
             _binding.imagenNoticia.setPostImage(media)
-            println(post)
         }
     }
 
@@ -61,7 +68,7 @@ class NoticiaDialogFragment : DialogFragment() {
             crossfade(true)
             //Same as before with this line, Kotlin is the most undocumented language i've ever seen
             loadingDrawable?.let{ drawable -> placeholder { drawable.asImage(true) }}
-            //error(R.drawable.loading)
+            error(R.drawable.warning)
         }
     }
 }

@@ -1,16 +1,17 @@
 package com.nemo.imaginaradio.models
 
+import android.text.Spanned
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Post (
     val id: Int,
-    val title: String,
-    val content: String,
+    val title: Spanned,
+    val content: Spanned,
     val date: String,
     val categories: List<Int>,
-    val mediaId: String
+    val mediaId: Int
 )
 
 @JsonClass(generateAdapter = true)
@@ -35,8 +36,7 @@ data class ContentRaw(
 
 @JsonClass(generateAdapter = true)
 data class LinksRaw(
-    @Json(name = "wp:featuredmedia")
-    val featuredMedia: List<FeaturedRaw>
+    @Json(name = "wp:featuredmedia")  val featuredMedia: List<FeaturedRaw>
 )
 
 @JsonClass(generateAdapter = true)

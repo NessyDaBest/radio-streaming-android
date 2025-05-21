@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
+    tools:context=".views.HomeFragment"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -74,7 +76,7 @@
 
         <!-- First Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_1"
+            android:id="@+id/noticiesRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -97,13 +99,13 @@
             android:textSize="18sp"
             android:textStyle="bold"
 
-            app:layout_constraintTop_toBottomOf="@id/recycler_view_1"
+            app:layout_constraintTop_toBottomOf="@id/noticiesRecycler"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Second Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_2"
+            android:id="@+id/terresRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -126,13 +128,13 @@
             android:textSize="18sp"
             android:textStyle="bold"
 
-            app:layout_constraintTop_toBottomOf="@id/recycler_view_2"
+            app:layout_constraintTop_toBottomOf="@id/terresRecycler"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Third Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_3"
+            android:id="@+id/esportsRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -155,13 +157,13 @@
             android:textSize="18sp"
             android:textStyle="bold"
 
-            app:layout_constraintTop_toBottomOf="@id/recycler_view_3"
+            app:layout_constraintTop_toBottomOf="@id/esportsRecycler"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Fourth Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_4"
+            android:id="@+id/vidaRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -184,13 +186,13 @@
             android:textSize="18sp"
             android:textStyle="bold"
 
-            app:layout_constraintTop_toBottomOf="@id/recycler_view_4"
+            app:layout_constraintTop_toBottomOf="@id/vidaRecycler"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Fifth Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_5"
+            android:id="@+id/mediambientRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

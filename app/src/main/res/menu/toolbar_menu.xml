@@ -7,7 +7,7 @@
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/news_fragment"
+        android:id="@+id/newsFragment"
         android:title="Notícies"
         android:icon="@drawable/baseline_newspaper_24"
         app:showAsAction="always"

@@ -15,7 +15,7 @@
 
         <!-- Item Image -->
         <ImageView
-            android:id="@+id/item_image"
+            android:id="@+id/postImage"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
@@ -26,23 +26,23 @@
 
         <!-- Item Title -->
         <TextView
-            android:id="@+id/item_title"
+            android:id="@+id/postTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
 
-            android:maxLines="2"
             android:ellipsize="end"
+            android:maxLines="2"
             android:textSize="14sp"
             android:textStyle="bold"
 
-            app:layout_constraintTop_toBottomOf="@id/item_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/postImage"
             tools:text="Item Title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

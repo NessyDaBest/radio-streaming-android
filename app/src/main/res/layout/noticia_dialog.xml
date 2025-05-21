@@ -1,76 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/dialogLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="24dp"
+
     android:background="@android:color/white"
     app:cardCornerRadius="16dp"
     app:cardElevation="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        app:layout_constraintWidth_percent="0.8">
+        android:layout_height="wrap_content">
 
-        <!-- Botón de cerrar -->
+        <!-- Botón de cerrar - fixed at the top right -->
         <ImageButton
             android:id="@+id/btnCerrar"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
 
             android:background="@android:color/transparent"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
-            android:contentDescription="Cerrar" />
+            android:contentDescription="Tancar" />
 
-        <!-- Imagen destacada -->
-        <ImageView
-            android:id="@+id/imagenNoticia"
+        <!-- ScrollView for all content except the close button -->
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/btnCerrar"
-            android:layout_marginTop="8dp"
-            android:scaleType="centerCrop"
-            android:src="@android:drawable/ic_menu_gallery" />
+            android:fillViewport="true">
 
-        <!-- Título -->
-        <TextView
-            android:id="@+id/tituloNoticia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imagenNoticia"
-            android:layout_marginTop="16dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
 
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black" />
+                <!-- Imagen destacada -->
+                <ImageView
+                    android:id="@+id/imagenNoticia"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_gallery" />
 
-        <!-- Contenido -->
-        <TextView
-            android:id="@+id/contenidoNoticia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tituloNoticia"
-            android:layout_marginTop="8dp"
+                <!-- Título -->
+                <TextView
+                    android:id="@+id/tituloNoticia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imagenNoticia"
+                    android:layout_marginTop="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black" />
 
-            android:textSize="14sp"
-            android:textColor="@android:color/darker_gray" />
-
-        <!-- Botón "Continuar leyendo" -->
-        <Button
-            android:id="@+id/btnLeerMas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/contenidoNoticia"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
-
-            android:text="Continuar leyendo en la web"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
+                <!-- Contenido - no max lines limit now -->
+                <TextView
+                    android:id="@+id/contenidoNoticia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tituloNoticia"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/darker_gray" />
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
