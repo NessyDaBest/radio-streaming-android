@@ -2,19 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/homeFragment"
-        android:title="Radio"
+        android:title="Ràdio"
         android:icon="@drawable/baseline_radio_24"
         app:showAsAction="always"
         />
     <item
-        android:id="@+id/news_fragment"
-        android:title="Noticias"
+        android:id="@+id/newsFragment"
+        android:title="Notícies"
         android:icon="@drawable/baseline_newspaper_24"
         app:showAsAction="always"
         />
+    <!-- BORRAR ESTE
+    <item
+        android:id="@+id/progFragment"
+        android:title="Horari"
+        android:icon="@drawable/outline_access_time_24"
+        app:showAsAction="always"
+        />-->
     <item
         android:id="@+id/contactActivity"
-        android:title="Contacto"
+        android:title="Contacte"
         android:icon="@drawable/baseline_3p_24"
         app:showAsAction="always"
         />

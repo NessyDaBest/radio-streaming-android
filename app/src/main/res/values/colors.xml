@@ -1,23 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Textos y fondos -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="primary_1">#547AD4</color>
-    <color name="primary_2">#2E5FCF</color>
-    <color name="primary_3">#0E48CD</color>
-    <color name="primary_4">#093599</color>
-    <color name="primary_5">#072977</color>
+    <!-- Color del logo -->
+    <color name="logo">#2596be</color>
 
-    <color name="secondary_1">#7456D6</color>
-    <color name="secondary_2">#5730D1</color>
-    <color name="secondary_3">#3D10D0</color>
-    <color name="secondary_4">#2D0B9D</color>
-    <color name="secondary_5">#23087A</color>
+    <!-- Primarios -->
+    <color name="primary_1">#90CAF9</color>   <!-- blue_200 -->
+    <color name="primary_2">#64B5F6</color>   <!-- blue_300 -->
+    <color name="primary_3">#42A5F5</color>   <!-- blue_400 -->
+    <color name="primary_4">#2196F3</color>   <!-- blue_500 -->
+    <color name="primary_5">#1976D2</color>   <!-- blue_700 -->
 
-    <color name="tertiary_1">#42CBCB</color>
+    <!-- Secundarios -->
+    <color name="secondary_1">#BBDEFB</color> <!-- azul muy claro -->
+    <color name="secondary_2">#90CAF9</color>
+    <color name="secondary_3">#64B5F6</color>
+    <color name="secondary_4">#42A5F5</color>
+    <color name="secondary_5">#2196F3</color>
+
+    <!-- Terciarios -->
+    <color name="tertiary_1">#42CBCB</color> <!-- funciona bien en oscuro -->
     <color name="tertiary_2">#1AC4C4</color>
     <color name="tertiary_3">#00C3C3</color>
     <color name="tertiary_4">#008989</color>
     <color name="tertiary_5">#006B6B</color>
+
+    <!-- Paleta Material (inversión) -->
+    <color name="blue_50">#0D47A1</color>    <!-- dark primary surfaceVariant -->
+    <color name="blue_100">#1565C0</color>
+    <color name="blue_200">#1976D2</color>
+    <color name="blue_300">#1E88E5</color>
+    <color name="blue_400">#2196F3</color>
+    <color name="blue_500">#42A5F5</color>
+    <color name="blue_600">#64B5F6</color>
+    <color name="blue_700">#90CAF9</color>
+    <color name="blue_800">#BBDEFB</color>
+    <color name="blue_900">#E3F2FD</color>
+
+    <!-- Grises -->
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
 </resources>
