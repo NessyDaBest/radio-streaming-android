@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
+    android:background="@color/blue_900"
     tools:context=".views.ContactActivity">
 
     <!-- Líneas guía a 5% y 95% de ancho para márgenes responsivos -->
