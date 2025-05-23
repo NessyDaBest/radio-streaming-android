@@ -96,7 +96,7 @@ class HomeFragment : Fragment() {
     private fun inicializarReproductor() {
         RadioPlayer.initialize(playerViewModel, binding.playButton)
         binding.reproductorEnVivo.setOnClickListener {
-            requireActivity().findViewById<ConstraintLayout>(R.id.main).visibility = View.GONE
+            requireActivity().findViewById<ConstraintLayout>(R.id.main).visibility = View.VISIBLE
             requireActivity().findViewById<FragmentContainerView>(R.id.player_container).visibility = View.VISIBLE
         }
     }

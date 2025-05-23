@@ -2,6 +2,7 @@ package com.nemo.imaginaradio.views
 
 import android.graphics.Rect
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
