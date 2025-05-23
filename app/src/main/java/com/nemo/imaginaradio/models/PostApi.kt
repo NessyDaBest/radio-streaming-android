@@ -9,8 +9,9 @@ interface PostApi {
     @GET("posts")
     suspend fun getCategoryPosts(
         @Query("_embed") embed: String = "",
-        @Query("category") category: Int,
+        @Query("categories") category: Int,
         @Query("per_page") perPage: Int,
+        @Query("page") page: Int = 1,
         @Query("_fields") fields: String = "id,title,content,date,categories,_links",
         @Query("orderby") orderBy: String = "date",
         @Query("order") order: String = "desc"
@@ -20,7 +21,8 @@ interface PostApi {
     suspend fun getLastPosts(
         @Query("_embed") embed: String = "",
         @Query("per_page") perPage: Int,
-        @Query("_fields") fields: String = "id,title,content,date,categories",
+        @Query("page") page: Int = 1,
+        @Query("_fields") fields: String = "id,title,content,date,categories,_links",
         @Query("orderby") orderBy: String = "date",
         @Query("order") order: String = "desc"
     ): List<PostRaw>
@@ -28,7 +30,7 @@ interface PostApi {
     @GET("posts/{id}")
     suspend fun getPostById(
         @Path("id") id: Int,
-        @Query("_fields") fields: String = "id,title,content,date,categories",
+        @Query("_fields") fields: String = "id,title,content,date,categories,_links",
     ): PostRaw
 
     //Media queries

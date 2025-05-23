@@ -1,100 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.nemo.imaginaradio.views.MainFrag"
-
-    android:id="@+id/mainFragmentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
-    <!-- Title -->
+    android:background="#f8f5ef">
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8sp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="25dp"
+        android:text="Notícies"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+    />
 
-        android:textSize="26sp"
-        android:textStyle="bold" />
-
-    <!-- Category ScrollView -->
     <HorizontalScrollView
         android:id="@+id/categoryScroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:background="#222222">
+        android:layout_height="50dp"
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="#222222">
+        android:tooltipText="hola"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginVertical="12dp"
-
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </HorizontalScrollView>
-
-    <!-- Author and Date in a horizontal LinearLayout -->
-    <LinearLayout
+    <View
+        android:id="@+id/divider1"
         android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/categoryScroll"
+    />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="537dp"
+
+        app:layout_constraintBottom_toTopOf="@id/divider"
+        app:layout_constraintTop_toBottomOf="@id/divider1"
+    />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="?android:attr/listDivider"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+    />
+
+    <TextView
+        android:id="@+id/textNews"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/authorView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8sp"
-            android:layout_weight="1"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+        android:gravity="center"
+        android:text="Notícies"
+        android:textSize="15sp"
+        android:textColor="@color/black"
 
-        <TextView
-            android:id="@+id/dateView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8sp"
-            android:textSize="14sp" />
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
 
-    <!-- Image -->
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.98"
+    />
+
+    <TextView
+        android:id="@+id/textRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:text="Ràdio"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.98"
+    />
+
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
+        android:id="@+id/drawableRadio"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8sp"
-        android:adjustViewBounds="true" />
+        android:src="@drawable/baseline_radio_24"
 
-    <!-- Subtitle -->
-    <TextView
-        android:id="@+id/subtitleView"
-        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.744"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.95"
+    />
+
+    <ImageView
+        android:id="@+id/drawableNews"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="12sp"
+        android:src="@drawable/baseline_newspaper_24"
 
-        android:textSize="14sp"
-        android:textColor="#747474" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.27"
 
-    <!-- Main Content -->
-    <TextView
-        android:id="@+id/mainView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8sp"
-
-        android:textSize="17sp" />
-</LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.95"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>

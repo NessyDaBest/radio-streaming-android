@@ -17,13 +17,12 @@
         tools:layout="@layout/fragment_prog" />
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.nemo.imaginaradio.views.NoticiaDialogFragment"
+        android:name="com.nemo.imaginaradio.views.NewsFragment"
         android:label="news_prog"
-        tools:layout="@layout/noticia_dialog" />
+        tools:layout="@layout/fragment_news" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.nemo.imaginaradio.views.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
-
 </navigation>
