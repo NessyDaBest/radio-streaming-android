@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!--DayNight para modo claro/oscuro -->
+    <!-- Tema Base de la app -->
     <style name="Base.Theme.ImaginaRadio"
         parent="Theme.Material3.DayNight.NoActionBar">
 
@@ -25,12 +25,18 @@
         <item name="colorOnSurface">@color/gray_800</item>
         <item name="colorSurfaceVariant">@color/blue_50</item>
         <item name="colorOnSurfaceVariant">@color/gray_800</item>
-
-        <!-- Error (dejamos Material rojo por defecto o personaliza) -->
-        <!-- <item name="colorError">@color/red_800</item> -->
     </style>
 
-    <!-- Tema de aplicación, hereda el Base -->
+    <!-- Tema de splash/transición inicial -->
+    <style name="Theme.ImaginaRadio.Splash.Transparent"
+        parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Fondo igual al azul principal para evitar parpadeos -->
+        <item name="android:windowBackground">@color/primary_1</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!-- Tema final de la app -->
     <style name="Theme.ImaginaRadio"
         parent="Base.Theme.ImaginaRadio"
         tools:targetApi="31">

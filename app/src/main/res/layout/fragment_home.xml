@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/primary_1"
     tools:context=".views.HomeFragment">
 
     <!-- Reproductor flotante visible arriba -->
@@ -41,7 +41,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="12dp"
-                android:background="@color/tertiary_1"
+                android:background="@drawable/circular_background"
                 android:src="@android:drawable/ic_media_play"
                 android:tintMode="src_in"
                 app:tint="@color/secondary_3" />
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingTop="8dp"
-            android:text="En reproducció ara"
+            android:text="IMAGINARÀDIO"
             android:textColor="@android:color/white"
             android:textSize="22sp"
             android:textStyle="bold" />

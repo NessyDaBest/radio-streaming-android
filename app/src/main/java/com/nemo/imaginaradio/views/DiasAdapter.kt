@@ -8,7 +8,7 @@ import com.nemo.imaginaradio.R
 
 class DiasAdapter(
     private val dias: List<String>,
-    private val onDiaSeleccionado: (String) -> Unit
+    private val onDiaClick: (String) -> Unit
 ) : RecyclerView.Adapter<DiasAdapter.DiaViewHolder>() {
 
     inner class DiaViewHolder(val button: Button) : RecyclerView.ViewHolder(button)
@@ -20,10 +20,9 @@ class DiasAdapter(
     }
 
     override fun onBindViewHolder(holder: DiaViewHolder, position: Int) {
-        val dia = dias[position]
-        holder.button.text = dia
+        holder.button.text = dias[position]
         holder.button.setOnClickListener {
-            onDiaSeleccionado(dia)
+            onDiaClick(dias[position])
         }
     }
 

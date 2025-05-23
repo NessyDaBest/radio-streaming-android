@@ -12,13 +12,13 @@
         android:icon="@drawable/baseline_newspaper_24"
         app:showAsAction="always"
         />
-    <!-- BORRAR ESTE -->
+    <!-- BORRAR ESTE
     <item
         android:id="@+id/progFragment"
         android:title="Horari"
         android:icon="@drawable/outline_access_time_24"
         app:showAsAction="always"
-        />
+        />-->
     <item
         android:id="@+id/contactActivity"
         android:title="Contacte"

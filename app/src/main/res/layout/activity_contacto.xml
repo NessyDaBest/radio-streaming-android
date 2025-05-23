@@ -3,145 +3,210 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
     tools:context=".views.ContactActivity">
 
-    <!-- Título de la pantalla de contacto -->
-    <TextView
-        android:id="@+id/contactTitle"
+    <!-- Líneas guía a 5% y 95% de ancho para márgenes responsivos -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contacta con Imagina Radio"
+        app:layout_constraintGuide_percent="0.05"
+        app:layout_constraintGuide_begin="0dp"
+        android:orientation="vertical" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gdRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.95"
+        android:orientation="vertical" />
+
+    <!-- Título centrado entre guías -->
+    <TextView
+        android:id="@+id/contactTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Contacta amb Imagina Ràdio"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:gravity="center" />
+        app:layout_constraintStart_toStartOf="@id/gdLeft"
+        app:layout_constraintEnd_toEndOf="@id/gdRight"/>
 
-    <!-- ScrollView para que el formulario sea desplazable -->
+    <!-- ScrollView ocupa todo el espacio debajo del título -->
     <ScrollView
         android:id="@+id/contactScrollView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/contactTitle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp">
+        app:layout_constraintStart_toStartOf="@id/gdLeft"
+        app:layout_constraintEnd_toEndOf="@id/gdRight">
 
+        <!-- Aquí usamos un LinearLayout porque todo el contenido es vertical -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Campo: Nombre -->
+            <!-- Campo Nombre -->
             <EditText
                 android:id="@+id/etNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre"
-                android:inputType="textPersonName"
-                android:layout_marginBottom="8dp" />
+                android:hint="Nom"/>
 
-            <!-- Campo: Apellidos -->
+            <!-- espacio dinámico -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp"/>
+
+            <!-- Campo Apellidos -->
             <EditText
                 android:id="@+id/etApellidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Apellidos"
-                android:inputType="textPersonName"
-                android:layout_marginBottom="8dp" />
+                android:hint="Cognoms"/>
 
-            <!-- Campo: Email -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp"/>
+
+            <!-- Campo Email -->
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:layout_marginBottom="8dp" />
+                android:hint="Email"/>
 
-            <!-- Texto para el Spinner -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+
+            <!-- Spinner Label -->
             <TextView
                 android:id="@+id/tvDepartamento"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="¿A qué departamento quieres dirigirte?"
-                android:textSize="16sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="4dp"/>
+                android:text="Amb quin departament vol parlar?"
+                android:textStyle="bold"/>
 
-            <!-- Spinner para Departamento -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp"/>
+
+            <!-- Spinner -->
             <Spinner
                 android:id="@+id/spinnerDepartamento"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp" />
+                android:layout_height="wrap_content"/>
 
-            <!-- Campo: Mensaje -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+
+            <!-- Mensaje: altura mínima, pero wrap_content -->
             <EditText
                 android:id="@+id/etMensaje"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:hint="Mensaje"
+                android:layout_height="wrap_content"
+                android:hint="Missatge"
                 android:gravity="top"
                 android:inputType="textMultiLine"
-                android:layout_marginBottom="16dp"
-                android:background="@android:drawable/edit_text" />
+                android:minHeight="0dp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp"/>
+
+            <!-- Botón Enviar -->
             <Button
                 android:id="@+id/btnEnviar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ENVIAR"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"/>
+                android:layout_gravity="center"/>
 
-            <!-- Sección: Redes Sociales -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp"/>
+
+            <!-- Redes Sociales label -->
             <TextView
                 android:id="@+id/tvRedesSociales"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Síguenos en redes sociales"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:layout_marginBottom="20dp" />
+                android:text="Segueix-nos en xarxes socials"
+                android:textStyle="bold"/>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+
+            <!-- Iconos sociales en LinearLayout centrado -->
+            <!-- Iconos sociales en LinearLayout centrado -->
             <LinearLayout
-                android:id="@+id/socialLinksContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
+                android:weightSum="3"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp">
 
                 <ImageView
                     android:id="@+id/ivFacebook"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/facebook_icon"
                     android:contentDescription="facebook"
-                    android:layout_marginEnd="20dp" />
+                    android:maxWidth="48dp"
+                    android:maxHeight="48dp"/>
+
+                <Space
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/ivTwitter"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/twitter_icon"
                     android:contentDescription="twitter"
-                    android:layout_marginStart="20dp" />
+                    android:maxWidth="48dp"
+                    android:maxHeight="48dp"/>
+
+                <Space
+                    android:layout_width="16dp"
+                    android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/ivInstagram"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/instagram_icon"
                     android:contentDescription="instagram"
-                    android:layout_marginStart="20dp" />
+                    android:maxWidth="48dp"
+                    android:maxHeight="48dp"/>
             </LinearLayout>
+
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,21 +4,24 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Primary -->
+    <!-- Color del logo -->
+    <color name="logo">#2596be</color>
+
+    <!-- Primarios -->
     <color name="primary_1">#90CAF9</color>   <!-- blue_200 -->
     <color name="primary_2">#64B5F6</color>   <!-- blue_300 -->
     <color name="primary_3">#42A5F5</color>   <!-- blue_400 -->
     <color name="primary_4">#2196F3</color>   <!-- blue_500 -->
     <color name="primary_5">#1976D2</color>   <!-- blue_700 -->
 
-    <!-- Secondary -->
+    <!-- Secundarios -->
     <color name="secondary_1">#BBDEFB</color> <!-- azul muy claro -->
     <color name="secondary_2">#90CAF9</color>
     <color name="secondary_3">#64B5F6</color>
     <color name="secondary_4">#42A5F5</color>
     <color name="secondary_5">#2196F3</color>
 
-    <!-- Tertiary -->
+    <!-- Terciarios -->
     <color name="tertiary_1">#42CBCB</color> <!-- funciona bien en oscuro -->
     <color name="tertiary_2">#1AC4C4</color>
     <color name="tertiary_3">#00C3C3</color>
