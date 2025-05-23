@@ -11,6 +11,7 @@ interface PostApi {
         @Query("_embed") embed: String = "",
         @Query("categories") category: Int,
         @Query("per_page") perPage: Int,
+        @Query("page") page: Int = 1,
         @Query("_fields") fields: String = "id,title,content,date,categories,_links",
         @Query("orderby") orderBy: String = "date",
         @Query("order") order: String = "desc"
@@ -20,6 +21,7 @@ interface PostApi {
     suspend fun getLastPosts(
         @Query("_embed") embed: String = "",
         @Query("per_page") perPage: Int,
+        @Query("page") page: Int = 1,
         @Query("_fields") fields: String = "id,title,content,date,categories,_links",
         @Query("orderby") orderBy: String = "date",
         @Query("order") order: String = "desc"

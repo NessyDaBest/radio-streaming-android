@@ -16,6 +16,7 @@ import coil3.request.placeholder
 import com.nemo.imaginaradio.R
 import com.nemo.imaginaradio.databinding.FragmentNewsBinding
 import com.nemo.imaginaradio.models.PostRepository
+import com.nemo.imaginaradio.utils.CardPostsAdapter
 import kotlinx.coroutines.launch
 
 class NewsFragment: Fragment(){
@@ -32,35 +33,26 @@ class NewsFragment: Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        _binding.noticiesRecycler.layoutManager = LinearLayoutManager(requireContext())
-        _binding.terresRecycler.layoutManager = LinearLayoutManager(requireContext())
-        _binding.esportsRecycler.layoutManager = LinearLayoutManager(requireContext())
-        _binding.vidaRecycler.layoutManager = LinearLayoutManager(requireContext())
-        _binding.mediambientRecycler.layoutManager = LinearLayoutManager(requireContext())
+        _binding.noticiesRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        _binding.noticiesRecycler.adapter = CardPostsAdapter(7, viewLifecycleOwner.lifecycleScope, childFragmentManager)
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            try{
-                
-            }
-            catch (e: Exception){
-                println("Error:" + e.message)
-                println(e.printStackTrace())
-            }
-        }
+        _binding.terresRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        _binding.terresRecycler.adapter = CardPostsAdapter(6498, viewLifecycleOwner.lifecycleScope, childFragmentManager)
+
+        _binding.esportsRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        _binding.esportsRecycler.adapter = CardPostsAdapter(9, viewLifecycleOwner.lifecycleScope, childFragmentManager)
+
+        _binding.vidaRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        _binding.vidaRecycler.adapter = CardPostsAdapter(11, viewLifecycleOwner.lifecycleScope, childFragmentManager)
+
+        _binding.mediambientRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        _binding.mediambientRecycler.adapter = CardPostsAdapter(687, viewLifecycleOwner.lifecycleScope, childFragmentManager)
+
+        _binding.politicaRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        _binding.politicaRecycler.adapter = CardPostsAdapter(8, viewLifecycleOwner.lifecycleScope, childFragmentManager)
     }
 
     //Loading posts
-    private fun fetchData(){
-        lifecycleScope.launch {
-            try {
-                val posts = postRepo.getLastPosts(1)
-            } catch (e: Exception) {
-                println("Error: ${e.message}")
-                println(e.printStackTrace())
-            }
-        }
-    }
-
     fun fillFirst(){
         lifecycleScope.launch {
             try{
@@ -77,7 +69,7 @@ class NewsFragment: Fragment(){
     }
 
     fun ImageView.setPostImage(link: String){
-        val loadingDrawable = ContextCompat.getDrawable(context, R.drawable.loading)
+        val loadingDrawable = ContextCompat.getDrawable(context, R.drawable.loading_svg)
 
         this.load(link){
             crossfade(true)

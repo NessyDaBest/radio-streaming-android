@@ -3,6 +3,7 @@ package com.nemo.imaginaradio.models
 import android.text.Spanned
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
 data class Post (
@@ -12,7 +13,7 @@ data class Post (
     val date: String,
     val categories: List<Int>,
     val mediaId: Int
-)
+): Serializable
 
 @JsonClass(generateAdapter = true)
 data class PostRaw(

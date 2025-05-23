@@ -2,6 +2,8 @@ package com.nemo.imaginaradio.models
 
 import android.text.Html
 import com.squareup.moshi.Moshi
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.time.LocalDateTime
@@ -9,16 +11,23 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 class PostRepository {
+    val client = OkHttpClient.Builder()
+        .addInterceptor(HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        })
+        .build()
     private val moshi = Moshi.Builder().build()
     private val postApi:PostApi = Retrofit.Builder().baseUrl("https://www.imaginaradio.cat/wp-json/wp/v2/").addConverterFactory(
         MoshiConverterFactory.create(moshi)).build().create(PostApi::class.java)
 
     //Post queries
-    suspend fun getCategoryPosts(category: Int, perPage: Int = 10): List<Post>{
+    //page must be one or greater, i'm lazy to write checks
+    suspend fun getCategoryPosts(category: Int, perPage: Int = 10, page: Int = 1): List<Post>{
         return arrayParse(postApi.getCategoryPosts(category = category, perPage = perPage))
     }
 
-    suspend fun getLastPosts(perPage: Int = 10): List<Post>{
+    //page must be one or greater, i'm lazy to write checks
+    suspend fun getLastPosts(perPage: Int = 10, page: Int = 1): List<Post>{
         return arrayParse(postApi.getLastPosts(perPage = perPage))
     }
 

@@ -24,13 +24,33 @@ class NoticiaDialogFragment : DialogFragment() {
     private lateinit var _binding: NoticiaDialogBinding
     private var postRepo = PostRepository()
 
+    companion object {
+        private const val ARG_POST_ID = "arg_post_id"
+
+        fun newInstance(postId: Int): NoticiaDialogFragment{
+            val fragment = NoticiaDialogFragment()
+            val args = Bundle()
+            args.putInt(ARG_POST_ID, postId)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = NoticiaDialogBinding.inflate(inflater, container, false)
-        fetchData()
+
+        val postId = arguments?.getInt(ARG_POST_ID)?: null
+        if (postId != null){
+            fetchData(postId)
+        }
+        else{
+            //Do something here
+        }
+
         return _binding.root
     }
 
@@ -40,10 +60,10 @@ class NoticiaDialogFragment : DialogFragment() {
     }
 
     //Loading post
-    private fun fetchData(){
+    private fun fetchData(post: Int){
         lifecycleScope.launch {
             try {
-                val post = postRepo.getPostById(135310)
+                val post = postRepo.getPostById(post)
                 val media = postRepo.getPostMedia(post.mediaId)
                 fillView(post, media)
             } catch (e: Exception) {
@@ -62,13 +82,13 @@ class NoticiaDialogFragment : DialogFragment() {
 
     fun ImageView.setPostImage(link: String){
         //This does jackshit and changes nothing but i'm too tired of it to care any more
-        val loadingDrawable = ContextCompat.getDrawable(context, R.drawable.loading)
+        val loadingDrawable = ContextCompat.getDrawable(context, R.drawable.loading_svg)
 
         this.load(link){
             crossfade(true)
             //Same as before with this line, Kotlin is the most undocumented language i've ever seen
             loadingDrawable?.let{ drawable -> placeholder { drawable.asImage(true) }}
-            error(R.drawable.warning)
+            //error(R.drawable.warning)
         }
     }
 }

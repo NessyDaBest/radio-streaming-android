@@ -1,14 +1,10 @@
 package com.nemo.imaginaradio.views
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import com.nemo.imaginaradio.R
 import androidx.navigation.fragment.NavHostFragment
-
 import androidx.navigation.ui.NavigationUI
 import com.nemo.imaginaradio.databinding.ActivityMainBinding
 
