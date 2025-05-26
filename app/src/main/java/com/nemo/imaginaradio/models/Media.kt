@@ -14,7 +14,8 @@ data class MediaRaw(
 
 @JsonClass(generateAdapter = true)
 data class SizesRaw(
-    val large: FileRaw
+    val thumbnail: FileRaw,
+    val full: FileRaw
 )
 
 @JsonClass(generateAdapter = true)

@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 import coil3.request.crossfade
 import coil3.request.error
@@ -22,6 +23,8 @@ import kotlinx.coroutines.launch
 class NewsFragment: Fragment(){
     private lateinit var _binding: FragmentNewsBinding
     private var postRepo = PostRepository()
+    private var isLoading: Boolean = false
+    private var currentPage = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
@@ -50,9 +53,10 @@ class NewsFragment: Fragment(){
 
         _binding.politicaRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         _binding.politicaRecycler.adapter = CardPostsAdapter(8, viewLifecycleOwner.lifecycleScope, childFragmentManager)
+
     }
 
-    //Loading posts
+    //Loading post
     fun fillFirst(){
         lifecycleScope.launch {
             try{
@@ -62,18 +66,15 @@ class NewsFragment: Fragment(){
                 _binding.headerImage.setPostImage(postRepo.getPostMedia(post.mediaId))
             }
             catch (e: Exception) {
-                println("Error: ${e.message}")
+                println("Error: ${e.message}" + "from main image")
                 println(e.printStackTrace())
             }
         }
     }
 
     fun ImageView.setPostImage(link: String){
-        val loadingDrawable = ContextCompat.getDrawable(context, R.drawable.loading_svg)
-
         this.load(link){
             crossfade(true)
-            //loadingDrawable?.let{ drawable -> placeholder { drawable.asImage(true) }}
             placeholder(R.drawable.loading_svg)
             error(R.drawable.warning)
         }
