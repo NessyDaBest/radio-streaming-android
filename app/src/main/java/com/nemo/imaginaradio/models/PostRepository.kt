@@ -1,5 +1,6 @@
 package com.nemo.imaginaradio.models
 
+import android.R
 import android.text.Html
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -23,12 +24,12 @@ class PostRepository {
     //Post queries
     //page must be one or greater, i'm lazy to write checks
     suspend fun getCategoryPosts(category: Int, perPage: Int = 10, page: Int = 1): List<Post>{
-        return arrayParse(postApi.getCategoryPosts(category = category, perPage = perPage))
+        return arrayParse(postApi.getCategoryPosts(category = category, perPage = perPage, page = page))
     }
 
     //page must be one or greater, i'm lazy to write checks
     suspend fun getLastPosts(perPage: Int = 10, page: Int = 1): List<Post>{
-        return arrayParse(postApi.getLastPosts(perPage = perPage))
+        return arrayParse(postApi.getLastPosts(perPage = perPage, page = page))
     }
 
     suspend fun getPostById(id: Int): Post{
@@ -46,8 +47,13 @@ class PostRepository {
     }
 
     //Media queries
-    suspend fun getPostMedia(id: Int): String{
-        return postApi.getPostMedia(id = id).media_details.sizes.large.source_url
+    suspend fun getPostMedia(id: Int, size: Boolean = false): String{
+        if(size){
+            return postApi.getPostMedia(id = id).media_details.sizes.thumbnail.source_url
+        }
+        else {
+            return postApi.getPostMedia(id = id).media_details.sizes.full.source_url
+        }
     }
 
     //Parsing posts array response
