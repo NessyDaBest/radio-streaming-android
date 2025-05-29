@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 import coil3.request.crossfade
 import coil3.request.error
@@ -23,8 +21,6 @@ import kotlinx.coroutines.launch
 class NewsFragment: Fragment(){
     private lateinit var _binding: FragmentNewsBinding
     private var postRepo = PostRepository()
-    private var isLoading: Boolean = false
-    private var currentPage = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
@@ -64,6 +60,10 @@ class NewsFragment: Fragment(){
                 _binding.titleText.setText(post.title)
                 _binding.subtitleText.text = post.date
                 _binding.headerImage.setPostImage(postRepo.getPostMedia(post.mediaId))
+
+                _binding.headerContainer.setOnClickListener {
+                    PostDialogFragment.newInstance(post.id).show(childFragmentManager, "NoticiaDialog")
+                }
             }
             catch (e: Exception) {
                 println("Error: ${e.message}" + "from main image")

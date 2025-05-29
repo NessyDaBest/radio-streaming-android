@@ -1,6 +1,5 @@
 package com.nemo.imaginaradio.views
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,20 +12,20 @@ import coil3.asImage
 import coil3.load
 import coil3.request.crossfade
 import com.nemo.imaginaradio.R
-import com.nemo.imaginaradio.databinding.NoticiaDialogBinding
+import com.nemo.imaginaradio.databinding.PostDialogBinding
 import com.nemo.imaginaradio.models.Post
 import com.nemo.imaginaradio.models.PostRepository
 import kotlinx.coroutines.launch
 
-class NoticiaDialogFragment : DialogFragment() {
-    private lateinit var _binding: NoticiaDialogBinding
+class PostDialogFragment : DialogFragment() {
+    private lateinit var _binding: PostDialogBinding
     private var postRepo = PostRepository()
 
     companion object {
         private const val ARG_POST_ID = "arg_post_id"
 
-        fun newInstance(postId: Int): NoticiaDialogFragment{
-            val fragment = NoticiaDialogFragment()
+        fun newInstance(postId: Int): PostDialogFragment{
+            val fragment = PostDialogFragment()
             val args = Bundle()
             args.putInt(ARG_POST_ID, postId)
             fragment.arguments = args
@@ -39,7 +38,7 @@ class NoticiaDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = NoticiaDialogBinding.inflate(inflater, container, false)
+        _binding = PostDialogBinding.inflate(inflater, container, false)
 
         val postId = arguments?.getInt(ARG_POST_ID)?: null
         if (postId != null){
@@ -73,6 +72,7 @@ class NoticiaDialogFragment : DialogFragment() {
     fun fillView(post: Post, media: String){
         lifecycleScope.launch {
             _binding.tituloNoticia.setText(post.title)
+            _binding.fechaNoticia.setText(post.date)
             _binding.contenidoNoticia.setText(post.content)
             _binding.imagenNoticia.setPostImage(media)
         }

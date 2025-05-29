@@ -14,6 +14,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.nemo.imaginaradio.R
 import com.nemo.imaginaradio.databinding.ActivityMainBinding
+import com.nemo.imaginaradio.models.Post
+import com.nemo.imaginaradio.models.PostRepository
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -29,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
         hideShowNavBar()
+
+        preloadPosts()
 
         //setContentView(binding.root)
 
@@ -102,4 +108,26 @@ class MainActivity : AppCompatActivity() {
             overlay.visibility = View.GONE
         }, 1000)
     }
+
+    private fun preloadPosts(){
+        GlobalScope.launch {
+            try {
+                PostRepository().preloadCategories()
+            }
+            catch (e: Exception){
+                println("Error: ${e.message}" + "from main image")
+                println(e.printStackTrace())
+            }
+        }
+    }
 }
+
+data class PreloadResponse(
+    val first: Post,
+    val noticies: List<Post>,
+    val terres: List<Post>,
+    val esports: List<Post>,
+    val vida: List<Post>,
+    val mediambent: List<Post>,
+    val politica: List<Post>
+)

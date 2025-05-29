@@ -16,69 +16,84 @@
         android:background="@color/primary_1"
         android:paddingBottom="200dp">
 
-        <TextView
+        <!-- Header Container - Clickable Group -->
+        <LinearLayout
+            android:id="@+id/header_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground"
+
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
             android:id="@+id/mainTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="25dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
 
             android:text="@string/newsTitle"
-            android:textColor="@color/white"
             android:textSize="32sp"
             android:textStyle="bold"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Header Image -->
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/header_image"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_margin="16dp"
-            android:scaleType="centerCrop"
-
-            app:layout_constraintEnd_toEndOf="parent"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mainTitle"
-            app:shapeAppearance="@style/newsRounderImage" />
-
-        <!-- Subtitle Text -->
-        <TextView
-            android:id="@+id/subtitle_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-
             android:textColor="@color/white"
-            android:textSize="12sp"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header_image" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Title Text -->
-        <TextView
-            android:id="@+id/title_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            <!-- Header Image -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/header_image"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearance="@style/newsRounderImage"
 
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
+                android:layout_margin="16dp"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subtitle_text" />
+                app:layout_constraintTop_toBottomOf="@id/mainTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Subtitle Text -->
+            <TextView
+                android:id="@+id/subtitle_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+
+                android:textSize="12sp"
+                android:textColor="@color/white"
+
+                app:layout_constraintTop_toBottomOf="@id/header_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Title Text -->
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+
+                app:layout_constraintTop_toBottomOf="@id/subtitle_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </LinearLayout>
 
         <!-- First Section Title -->
         <TextView
@@ -94,9 +109,9 @@
             android:textSize="24sp"
             android:textStyle="bold"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_container"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_text" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- First Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -109,27 +124,27 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_title_1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/section_title_1" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Second Section Title -->
         <TextView
             android:id="@+id/section_title_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
 
             android:text="@string/newsRecycler2"
-            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noticiesRecycler"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/noticiesRecycler" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Second Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -141,27 +156,27 @@
             android:orientation="horizontal"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_title_2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/section_title_2" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Third Section Title -->
         <TextView
             android:id="@+id/section_title_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
 
             android:text="@string/newsRecycler3"
-            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/terresRecycler"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/terresRecycler" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Third Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -173,27 +188,27 @@
             android:orientation="horizontal"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_title_3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/section_title_3" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Fourth Section Title -->
         <TextView
             android:id="@+id/section_title_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
 
             android:text="@string/newsRecycler4"
-            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/esportsRecycler"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/esportsRecycler" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Fourth Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -205,27 +220,27 @@
             android:orientation="horizontal"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_title_4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/section_title_4" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Fifth Section Title -->
         <TextView
             android:id="@+id/section_title_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
 
             android:text="@string/newsRecycler5"
-            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vidaRecycler"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vidaRecycler" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Fifth Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -237,27 +252,27 @@
             android:orientation="horizontal"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_title_5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/section_title_5" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Sixth Section Title -->
         <TextView
             android:id="@+id/section_title_6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
 
             android:text="@string/newsRecycler6"
-            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
 
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mediambientRecycler"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mediambientRecycler" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Fifth Horizontal RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
@@ -269,15 +284,15 @@
             android:orientation="horizontal"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/section_title_6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/section_title_6" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="72dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

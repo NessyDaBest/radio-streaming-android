@@ -36,7 +36,7 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <!-- Redondear imagen princial del fragment_news -->
+    <!-- Redondear imagen principal del fragment_news -->
     <style name="newsRounderImage">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>

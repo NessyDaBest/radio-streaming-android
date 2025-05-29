@@ -11,16 +11,16 @@ import coil3.request.crossfade
 import coil3.request.error
 import coil3.request.placeholder
 import com.nemo.imaginaradio.R
-import com.nemo.imaginaradio.databinding.CardPostsBinding
+import com.nemo.imaginaradio.databinding.ItemCardPostsBinding
 import com.nemo.imaginaradio.models.Post
 import com.nemo.imaginaradio.models.PostRepository
-import com.nemo.imaginaradio.views.NoticiaDialogFragment
+import com.nemo.imaginaradio.views.PostDialogFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CardPostsHolder(
-    private val binding: CardPostsBinding,
+    private val binding: ItemCardPostsBinding,
     private val lifecycleScope: LifecycleCoroutineScope
 ): RecyclerView.ViewHolder(binding.root){
     private val postRepo: PostRepository = PostRepository()
@@ -108,15 +108,14 @@ class CardPostsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardPostsHolder {
-        val binding = CardPostsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemCardPostsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CardPostsHolder(binding, lifecycleScope)
     }
 
     override fun onBindViewHolder(holder: CardPostsHolder, position: Int) {
         holder.bind(posts[position])
         holder.itemView.setOnClickListener {
-            val dialog = NoticiaDialogFragment.newInstance(posts[position].id)
-            dialog.show(fragmentManager, "NoticiaDialog")
+            PostDialogFragment.newInstance(posts[position].id).show(fragmentManager, "NoticiaDialog")
         }
     }
 
