@@ -1,9 +1,51 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.ImaginaRadio" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <!-- Tema Base de la app -->
+    <style name="Base.Theme.ImaginaRadio"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Paleta principal de Material3 -->
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/blue_100</item>
+        <item name="colorOnPrimaryContainer">@color/gray_800</item>
+
+        <item name="colorSecondary">@color/blue_300</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/blue_50</item>
+        <item name="colorOnSecondaryContainer">@color/gray_800</item>
+
+        <item name="colorTertiary">@color/blue_600</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorTertiaryContainer">@color/blue_200</item>
+        <item name="colorOnTertiaryContainer">@color/gray_800</item>
+
+        <!-- Fondos y superficies -->
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/gray_800</item>
+        <item name="colorSurfaceVariant">@color/blue_50</item>
+        <item name="colorOnSurfaceVariant">@color/gray_800</item>
     </style>
 
-    <style name="Theme.ImaginaRadio" parent="Base.Theme.ImaginaRadio" />
+    <!-- Tema de splash/transición inicial -->
+    <style name="Theme.ImaginaRadio.Splash.Transparent"
+        parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Fondo igual al azul principal para evitar parpadeos -->
+        <item name="android:windowBackground">@color/primary_1</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!-- Redondear imagen principal del fragment_news -->
+    <style name="newsRounderImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Tema final de la app -->
+    <style name="Theme.ImaginaRadio"
+        parent="Base.Theme.ImaginaRadio"
+        tools:targetApi="31">
+    </style>
+
 </resources>

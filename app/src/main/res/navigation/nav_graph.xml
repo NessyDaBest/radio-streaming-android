@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/contactActivity"
+        android:name="com.nemo.imaginaradio.views.ContactActivity"
+        android:label="activity_contacto"
+        tools:layout="@layout/activity_contacto" />
+    <fragment
+        android:id="@+id/progFragment"
+        android:name="com.nemo.imaginaradio.views.ProgFragment"
+        android:label="fragment_prog"
+        tools:layout="@layout/fragment_prog" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.nemo.imaginaradio.views.NewsFragment"
+        android:label="news_prog"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nemo.imaginaradio.views.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+</navigation>

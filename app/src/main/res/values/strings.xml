@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ImaginaRadio</string>
+    <string name="newsTitle">Última hora</string>
+    <string name="newsRecycler1">Noticies</string>
+    <string name="newsRecycler2">Terres de l\'Ebre</string>
+    <string name="newsRecycler3">Esports</string>
+    <string name="newsRecycler4">Vida</string>
+    <string name="newsRecycler5">Mediambient</string>
+    <string name="newsRecycler6">Política</string>
 </resources>

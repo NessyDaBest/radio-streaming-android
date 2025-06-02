@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Ràdio"
+        android:icon="@drawable/baseline_radio_24"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/newsFragment"
+        android:title="Notícies"
+        android:icon="@drawable/baseline_newspaper_24"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/contactActivity"
+        android:title="Contacte"
+        android:icon="@drawable/baseline_3p_24"
+        app:showAsAction="always"
+        />
+</menu>
