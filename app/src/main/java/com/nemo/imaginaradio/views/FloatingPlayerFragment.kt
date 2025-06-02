@@ -32,7 +32,7 @@ class FloatingPlayerFragment : Fragment() {
     }
 
     private fun inicializarReproductor() {
-        RadioPlayer.initialize(playerViewModel,binding.playPauseButton)
+        RadioPlayer.initialize(playerViewModel,binding.playPauseButton,viewLifecycleOwner)
         binding.floatingPlayerContainer.setOnClickListener {
             requireActivity().findViewById<ConstraintLayout>(R.id.main).visibility = View.GONE
             requireActivity().findViewById<FragmentContainerView>(R.id.player_container).visibility = View.VISIBLE

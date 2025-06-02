@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.lifecycle.LifecycleOwner
 import com.nemo.imaginaradio.databinding.FragmentPlayerBinding
 import com.nemo.imaginaradio.viewmodels.PlayerViewModel
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import java.util.WeakHashMap
 
 //object to make it only instantiate once
 object RadioPlayer {
@@ -21,14 +23,21 @@ object RadioPlayer {
     private var initialized = false
     private lateinit var viewModel: PlayerViewModel
 
-    fun initialize(viewModel: PlayerViewModel, button: View) {
+    private val buttonList = mutableListOf<ImageView>()
+    private val observedOwners = WeakHashMap<LifecycleOwner, Unit>()
+
+    fun initialize(viewModel: PlayerViewModel, button: ImageView, lifecycleOwner: LifecycleOwner) {
         if (!initialized) {
             this.viewModel = viewModel
             initializeTime()
             initializePlayer()
             initialized = true
         }
-        initializeButton(button)
+
+        observePlayerState(lifecycleOwner)
+
+        registerButton(button)
+        //initializeButton(button, lifecycleOwner)
     }
 
     private fun initializePlayer() {
@@ -64,13 +73,65 @@ object RadioPlayer {
         Log.d("MENSAJE","Para")
     }
 
-    private fun initializeButton(button:View) {
-        button.setOnClickListener {
+    /*private fun initializeButton(button:ImageView, lifecycleOwner: LifecycleOwner) {
+        viewModel.playerState.observe(lifecycleOwner) { newState ->
             when (viewModel.playerState.value) {
-                "Reproduciendo" -> { stopAudio() }
-                "Pausado" -> { playAudio() }
+                "Reproduciendo" -> {
+                    button.setImageResource(android.R.drawable.ic_media_play)
+                }
+                "Pausado" -> {
+                    button.setImageResource(android.R.drawable.ic_media_pause)
+                }
             }
         }
+
+        button.setOnClickListener {
+            when (viewModel.playerState.value) {
+                "Reproduciendo" -> {
+                    stopAudio()
+                    button.setImageResource(android.R.drawable.ic_media_play)
+                }
+                "Pausado" -> {
+                    playAudio()
+                    button.setImageResource(android.R.drawable.ic_media_pause)
+                }
+            }
+        }
+    }*/
+
+    private fun registerButton(button: ImageView) {
+        if (!buttonList.contains(button)) {
+            buttonList.add(button)
+        }
+
+        button.setOnClickListener {
+            when (viewModel.playerState.value) {
+                "Reproduciendo" -> stopAudio()
+                "Pausado" -> playAudio()
+            }
+        }
+
+        // Aplica el icono actual al botón
+        updateButtonIcon(button, viewModel.playerState.value)
+    }
+
+    private fun observePlayerState(lifecycleOwner: LifecycleOwner) {
+        if (observedOwners.containsKey(lifecycleOwner)) return
+        observedOwners[lifecycleOwner] = Unit
+
+        viewModel.playerState.observe(lifecycleOwner) { state ->
+            Log.d("RadioPlayer", "Estado cambió a: $state")
+            buttonList.forEach { updateButtonIcon(it, state) }
+        }
+    }
+
+    private fun updateButtonIcon(button: ImageView, state: String?) {
+        val icon = when (state) {
+            "Reproduciendo" -> android.R.drawable.ic_media_pause
+            "Pausado" -> android.R.drawable.ic_media_play
+            else -> android.R.drawable.ic_media_play
+        }
+        button.setImageResource(icon)
     }
 
     private fun initializeTime() {

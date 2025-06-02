@@ -41,7 +41,7 @@ class PlayerFragment : Fragment() {
     }
 
     private fun initializeView() {
-        RadioPlayer.initialize(playerViewModel,binding.imgState)
+        RadioPlayer.initialize(playerViewModel,binding.imgState,viewLifecycleOwner)
         initializeTime()
         initializeClose()
     }

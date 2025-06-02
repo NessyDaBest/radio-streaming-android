@@ -35,10 +35,11 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/logo_imagina_radio" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/playButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="8dp"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="12dp"
                 android:background="@drawable/circular_background"
